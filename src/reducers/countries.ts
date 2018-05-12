@@ -1,4 +1,7 @@
 export function countries(state: any = [], action: any) {
-    console.log(action.type);
+    if (action.type === 'ADD_COUNTRY') {
+        console.log(action.payload.data[0]);
+    }
+
     return state;
 }

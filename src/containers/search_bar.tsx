@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { addCountry } from '../actions/index';
 
@@ -19,7 +20,8 @@ class SearchBar extends React.Component<any, any> {
 
     onSubmit(event: any) {
         event.preventDefault();
-        this.props.onCountryAdd(this.state.searchTerm);
+        this.props.addCountry(this.state.searchTerm);
+        this.setState({searchTerm: ''});
     }
 
     render() {
@@ -42,9 +44,7 @@ class SearchBar extends React.Component<any, any> {
 }
 
 function mapDispatchToProps(dispatch: any) {
-    return function onCountryAdd(countryName: string) {
-            dispatch(addCountry(countryName));
-    };
+    return bindActionCreators({addCountry}, dispatch);
 }
 
 const SearchBarContainer = connect(null, mapDispatchToProps)(SearchBar);

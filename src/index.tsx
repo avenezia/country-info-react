@@ -8,13 +8,15 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxPromise from 'redux-promise';
+
 import { countries } from './reducers/countries';
 
-const store = createStore(countries);
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={createStoreWithMiddleware(countries)}>
     <App />
   </Provider>,
   document.getElementById('root') as HTMLElement
