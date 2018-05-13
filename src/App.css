@@ -28,5 +28,6 @@
 }
 
 img {
-  width: 6em
+  width: 6em;
+  box-shadow: 1px 1px;
 }

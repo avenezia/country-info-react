@@ -1,7 +1,8 @@
-export function countries(state: any = [], action: any) {
-    if (action.type === 'ADD_COUNTRY') {
-        console.log(action.payload.data[0]);
-    }
+import { combineReducers } from 'redux';
+import { countriesReducer } from './countries';
 
-    return state;
-}
+const rootReducer = combineReducers({
+    countries: countriesReducer
+});
+
+export default rootReducer;

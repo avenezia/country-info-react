@@ -1,5 +1,9 @@
 import * as React from 'react';
 
+import { connect } from 'react-redux';
+
+import { CountryListItem } from '../components/country_list_item';
+
 class CountryList extends React.Component<any, any> {
 
     constructor(props: any) {
@@ -7,22 +11,33 @@ class CountryList extends React.Component<any, any> {
     }
 
     render() {
+        if (this.props.countries.length === 0) {
+            return null;
+        }
 
         return (
             <table className="table table-hover mt-4">
                 <thead>
-                    <th>Name</th>
-                    <th>Population</th>
-                    <th>Area</th>
-                    <th>Capital</th>
-                    <th>Flag</th>
+                    <tr>
+                        <th>Name</th>
+                        <th>Population</th>
+                        <th>Area</th>
+                        <th>Capital</th>
+                        <th>Flag</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr/>
+                   {this.props.countries.map(CountryListItem)}
                 </tbody>
             </table>
         );
     }
 }
 
-export default CountryList;
+function mapStateToProps(state: any) {
+    return { countries: state.countries };
+}
+
+const CountryListContainer = connect(mapStateToProps, null)(CountryList);
+
+export default CountryListContainer;
