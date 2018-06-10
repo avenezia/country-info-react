@@ -3,6 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { CountryListItem } from '../components/country_list_item';
+import { State } from '../interfaces';
 
 class CountryList extends React.Component<any, any> {
 
@@ -34,9 +35,7 @@ class CountryList extends React.Component<any, any> {
     }
 }
 
-function mapStateToProps(state: any) {
-    return { countries: state.countries };
-}
+const mapStateToProps = (state: State) => state.countries;
 
 const CountryListContainer = connect(mapStateToProps, null)(CountryList);
 
