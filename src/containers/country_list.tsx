@@ -1,7 +1,9 @@
 import * as React from 'react';
 
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+import { orderBy } from '../actions/index';
 import { CountryListItem } from '../components/country_list_item';
 import { State } from '../interfaces';
 
@@ -28,7 +30,7 @@ class CountryList extends React.Component<any, any> {
                     </tr>
                 </thead>
                 <tbody>
-                   {this.props.countries.map(CountryListItem)}
+                    {this.props.countries.map(CountryListItem)}
                 </tbody>
             </table>
         );
@@ -37,6 +39,8 @@ class CountryList extends React.Component<any, any> {
 
 const mapStateToProps = (state: State) => state.countries;
 
-const CountryListContainer = connect(mapStateToProps, null)(CountryList);
+const mapDispatchToProps = (dispatch: any) => bindActionCreators({orderBy}, dispatch);
+
+const CountryListContainer = connect(mapStateToProps, mapDispatchToProps)(CountryList);
 
 export default CountryListContainer;

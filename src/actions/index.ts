@@ -7,3 +7,7 @@ export function addCountry(countryName: string) {
     console.log(promise);
     return { type: 'ADD_COUNTRY', payload: promise };
 }
+
+export function orderBy(fieldName: string) {
+    return { type: 'ORDER_BY', payload: fieldName };
+}
