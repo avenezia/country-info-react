@@ -47,7 +47,7 @@ class CountryList extends React.Component<any, any> {
                         <th className="sortable" onClick={this.handleThClick}>Name</th>
                         <th className="sortable" onClick={this.handleThClick}>Population</th>
                         <th className="sortable" onClick={this.handleThClick}>Area</th>
-                        <th>Capital</th>
+                        <th className="sortable" onClick={this.handleThClick}>Capital</th>
                         <th>Flag</th>
                     </tr>
                 </thead>
