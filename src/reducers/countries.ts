@@ -11,8 +11,8 @@ export function countriesReducer(state: State = initialState, action: any) {
         if (action.payload.data && action.payload.data.length > 0) {
             return { ...state, countries: action.payload.data.concat(state.countries) };
         }
-    } else if (action.type === 'ORDER_BY') {
-        return { ...state, countries: _.orderBy(state.countries, action.payload) };
+    } else if (action.type === 'SORT_BY') {
+        return { ...state, countries: _.orderBy(state.countries, action.payload.field, action.payload.type) };
     }
 
     return state;

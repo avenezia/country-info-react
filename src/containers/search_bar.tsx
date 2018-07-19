@@ -1,8 +1,10 @@
 import * as React from 'react';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { addCountry } from '../actions/index';
+import { RemoveSortingStyle } from './country_list';
 
 class SearchBar extends React.Component<any, any> {
 
@@ -22,6 +24,7 @@ class SearchBar extends React.Component<any, any> {
         event.preventDefault();
         this.props.addCountry(this.state.searchTerm);
         this.setState({searchTerm: ''});
+        RemoveSortingStyle();
     }
 
     render() {
@@ -43,9 +46,7 @@ class SearchBar extends React.Component<any, any> {
     }
 }
 
-function mapDispatchToProps(dispatch: any) {
-    return bindActionCreators({addCountry}, dispatch);
-}
+const mapDispatchToProps = (dispatch: any) => bindActionCreators({addCountry}, dispatch);
 
 const SearchBarContainer = connect(null, mapDispatchToProps)(SearchBar);
 

@@ -8,6 +8,6 @@ export function addCountry(countryName: string) {
     return { type: 'ADD_COUNTRY', payload: promise };
 }
 
-export function orderBy(fieldName: string) {
-    return { type: 'ORDER_BY', payload: fieldName };
+export function sortBy(fieldName: string, sortingType: string) {
+    return { type: 'SORT_BY', payload: {'field': fieldName, 'type': sortingType }};
 }

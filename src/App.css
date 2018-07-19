@@ -31,3 +31,15 @@ img {
   width: 6em;
   box-shadow: 1px 1px;
 }
+
+.sortable {
+  cursor: pointer;
+}
+
+table thead th.asc {
+  border-top: 3px solid black;
+}
+
+table thead th.desc {
+  border-bottom: 3px solid black;
+}
