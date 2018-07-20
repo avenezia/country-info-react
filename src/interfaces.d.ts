@@ -1,7 +1,3 @@
-export enum ActionTypes {
-    ADD_COUNTRY = 'ADD_COUNTRY'
-}
-
 export interface Country {
     name: string;
     population: number;
